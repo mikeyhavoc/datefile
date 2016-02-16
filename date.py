@@ -42,5 +42,6 @@ def file_change(folder,ext):
 
 
 kind = file_type()
-file_change('C:\\Users\\mjwil\\Documents\\portfolio\\python\\date',kind)
+path = os.path.abspath(os.getcwd())
+file_change(path,kind)
 #TODO version3.direct folder change files with ext to yyyy-mm-dd-min-filename.ext.
