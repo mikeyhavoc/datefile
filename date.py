@@ -25,10 +25,10 @@ def file_change(folder):
         if filenames.startswith('date') and filenames.endswith('.py'):
             continue    # skip date.py file
         if filenames.startswith('.git') and filenames.endswith('.git'):
-            continue
+            continue    # skips git repository
         if filenames.endswith('.txt'):
             if filenames.startswith(str(year)):
-                continue
+                continue    # skips previously dated files.
         os.rename(filenames, date_name)
 
 
