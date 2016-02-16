@@ -26,10 +26,10 @@ def file_type():
 
 
 #Gets files in folder, replaces files with yyyy-mm-dd-filename.ext
-def file_change(folder):
-    '''Looks through directory for files to convert file name to  yyyy-mm-dd-filename.ext''' 
+def file_change(folder,ext):
+    '''Looks through directory for files to convert file name to  yyyy-mm-dd-filename.ext'''
     for filenames in os.listdir(folder):
-        date_name = str(year) + '-' + str(month) + '-' + str(day) + "_" + filenames
+        date_name = str(year) + '-' + str(month) + '-' + str(day) + "_" + str(filenames)
 
         if filenames.startswith('date') and filenames.endswith('.py'):
             continue    # skip date.py file
@@ -37,10 +37,10 @@ def file_change(folder):
             continue    # skips git repository
         if filenames.startswith(str(year)):
             continue    # skips previously dated files.
-        if filenames.endswith('.txt'):
+        if filenames.endswith(ext):
             os.rename(filenames, date_name)
 
 
-
-file_change('C:\\Users\\mjwil\\Documents\\portfolio\\python\\date')
+kind = file_type()
+file_change('C:\\Users\\mjwil\\Documents\\portfolio\\python\\date',kind)
 #TODO version3.direct folder change files with ext to yyyy-mm-dd-min-filename.ext.
