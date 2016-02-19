@@ -3,9 +3,6 @@
 # Author Michael Williams
 # Date: 2/11/16
 # program: updates the date on program files.
-# version 1. gets date file.
-# version 2. name files if want too.
-# version 3. get creation date for file.
 # update: 2/16/16
 # Version: 2.0
 
@@ -33,7 +30,7 @@ def file_change(folder,ext):
 
         if filenames.startswith('date') and filenames.endswith('.py'):
             continue    # skip date.py file
-        if filenames.startswith('.git') and filenames.endswith('.git'):
+        if filenames.startswith('.git') or filenames.endswith('.git'):
             continue    # skips git repository
         if filenames.startswith(str(year)):
             continue    # skips previously dated files.
@@ -41,7 +38,7 @@ def file_change(folder,ext):
             os.rename(filenames, date_name)
 
 
-kind = file_type()
-path = os.path.abspath(os.getcwd())
-file_change(path,kind)
-#TODO version3.direct folder change files with ext to yyyy-mm-dd-min-filename.ext.
+kind = file_type()                  # asks for file type to search for.
+path = os.path.abspath(os.getcwd()) # directory you are in.
+file_change(path,kind)              # changes files with ext but will not change
+                                    # date.py or .git files.
